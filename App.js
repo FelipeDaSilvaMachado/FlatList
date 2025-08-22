@@ -1,7 +1,15 @@
+import react from 'react';
+import AppNavigation from './navigation/AppNavigator.js';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 
 export default function App() {
+  return (
+    <NavigationContainer>
+      <AppNavigation/>
+    </NavigationContainer>
+  );
   return (
     <View style={styles.container}>
       <Text>Sua HQ aqui!</Text>
@@ -12,9 +20,17 @@ export default function App() {
         renderItem={({ item }) => (
           <View style={styles.item}>
             <Image source={item.img} style={styles.img} />
-            <Text style={styles.titulo}>{item.titulo}</Text>
-            <Text style={styles.titulo}>{item.ano}</Text>
-            <Text style={styles.titulo}>{item.editora}</Text>
+            <View style={styles.titulo}>
+              <View style={styles.titulo}>
+                <Text style={styles.titulo}>{item.titulo}</Text>
+              </View>
+              <View style={styles.titulo}>
+                <Text style={styles.titulo}>{item.ano}</Text>
+              </View>
+              <View style={styles.titulo}>
+                <Text style={styles.titulo}>{item.editora}</Text>
+              </View>
+            </View>
           </View>
         )}
       />
@@ -30,20 +46,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titulo: {
+    flexDirection: 'column',
     fontFamily: 'Arial',
     fontSize: 16,
     textAlign: 'center',
     alignItems: 'center',
     color: '#ffffff',
-    margin: 3,
+    marginLeft: 10,
+    padding: 5,
   },
   img: {
-    width: 350,
-    height: 350,
+    width: 200,
+    height: 200,
     resizeMode: 'cover',
     borderRadius: 5,
   },
   item: {
+    flexDirection: 'row',
     padding: 5,
     margin: 5,
     backgroundColor: '#000000',
@@ -62,14 +81,14 @@ const hqs = [
   },
   {
     id: 2,
-    titulo: "Hulk contra todos!",
+    titulo: "Hulk \nContra o Mundo!",
     ano: 2012,
     editora: "Marvel Comics",
     img: require('./assets/hulk.png'),
   },
   {
     id: 3,
-    titulo: "Vingadores Avante",
+    titulo: "Vingadores \nAvante!",
     ano: 2005,
     editora: "Marvel Comics",
     img: require('./assets/vingadores.png'),
@@ -83,14 +102,14 @@ const hqs = [
   },
   {
     id: 5,
-    titulo: "Capitão América - Hydra",
+    titulo: "Capitão América \nHydra",
     ano: 1985,
     editora: "Marvel Comics",
     img: require('./assets/capitaoAmerica.png'),
   },
   {
     id: 6,
-    titulo: "Batman - Gothan City",
+    titulo: "Batman \nGothan City",
     ano: 2009,
     editora: "DC Comics",
     img: require('./assets/batman.png'),
