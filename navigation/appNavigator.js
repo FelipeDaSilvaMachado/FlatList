@@ -30,8 +30,10 @@ const AppNavigator = () => {
                     }
                     return (
                         <Image source={iconSource} style={[styles.icones,
-                        { tintColor: focused ? color : 'gray', width: size,
-                                    height: size }]} />
+                        {
+                            tintColor: focused ? color : 'gray', width: size,
+                            height: size
+                        }]} />
                     );
                 },
                 tabBarActiveTintColor: '#000000',

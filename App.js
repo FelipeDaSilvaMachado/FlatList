@@ -5,7 +5,7 @@ import AppNavigator from "./navigation/appNavigator";
 export default function App() {
   return (
     <NavigationContainer>
-      <AppNavigator/>
+      <AppNavigator />
     </NavigationContainer>
   );
 }
